@@ -1,24 +1,37 @@
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import Login from './Login';
-import SignUp from './SignUp';
-const App = () => {
-  return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup">Sign Up</Link>
-          </li>
-        </ul>
-      </nav>
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider
+} from "react-router-dom";
 
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
-      </Switch>
-    </Router>
+// Pages
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import ErrorPage from "./Pages/ErrorPage";
+
+// Layout
+import RootLayout from "./Layouts/RootLayout";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+
+      <Route path="*" element={<ErrorPage />} />
+    </Route>
+  )
+)
+
+function App() {
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
   );
-};
+}
+
+export default App;
