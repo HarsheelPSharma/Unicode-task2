@@ -11,18 +11,17 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import ErrorPage from "./Pages/ErrorPage";
 
-// Layout
+// Layou
 import RootLayout from "./Layouts/RootLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-
-      <Route path="*" element={<ErrorPage />} />
-    </Route>
+    <>
+    <Route index path="/" element={<Login />} />
+    <Route path="/Unicode-Task-2" element={<Login />} />
+    <Route path="/Unicode-Task-2/login" element={<Login />} />
+    <Route path="/Unicode-Task-2/register" element={<Register />} />
+  </>
   )
 )
 
